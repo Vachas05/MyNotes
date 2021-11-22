@@ -2,7 +2,7 @@ import {React,useContext} from 'react'
 import NoteContext from "../context/notes/noteContext";
 
 const NoteItem = (props) => {
-    const {note} = props;
+    const {note, updateNote} = props;
     const context = useContext(NoteContext);
     const { deleteNote } = context;
 
@@ -20,7 +20,7 @@ const NoteItem = (props) => {
                 style={{marginLeft:'-25px'}}>
                     {note.tag}</span>
                 <i className="far fa-trash-alt mx-2" onClick={()=>{handleOnClickDelete(note._id)}}></i>
-                <i className="fas fa-edit mx-2"></i>
+                <i className="fas fa-edit mx-2" onClick={()=>{updateNote(note)}}></i>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ const NoteState = (props)=> {
     const host = "http://localhost:5000"  
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial);
-    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzNzU5MDYwOCwiZXhwIjoxNjM3NTk0MjA4fQ.0thePOmdzCVyEx3K57dkRT-7hN6dBWwfeoyFGAw9_qI'
+    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzNzU5ODUxNywiZXhwIjoxNjM3NjAyMTE3fQ.--z3IZRhzhpR99e-eRxlULC94aX6DvMWsikGx_byk4c'
 
     const getAllNotes = async ()=>{
       //API call
@@ -67,6 +67,7 @@ const NoteState = (props)=> {
 
     //edit note
     const editNote = async (id,title,description,tag) =>{
+      console.log(id,title,description,tag);
       //API call
       const response = await fetch(`${host}/api/notes/updatenote/${id}`,{
         method : 'PUT',
@@ -77,15 +78,20 @@ const NoteState = (props)=> {
         body : JSON.stringify({title,description,tag}) 
       });
       
-      for (let index = 0; index < notes.length; index++) {
+      const json = await response.json();
+      console.log(json);
+
+      let newNotes = JSON.parse(JSON.stringify(notes));
+      for (let index = 0; index < newNotes.length; index++) {
         const element = notes[index];
         if(element._id === id){
-          element.title = title;
-          element.description = description;
-          element.tag = tag;
+          newNotes[index].title = title;
+          newNotes[index].description = description;
+          newNotes[index].tag = tag;
           break;
         }
       }
+      setNotes(newNotes);
     }
 
     return (
