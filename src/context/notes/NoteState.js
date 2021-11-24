@@ -5,7 +5,7 @@ const NoteState = (props)=> {
     const host = "http://localhost:5000"  
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial);
-    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzNzU5ODUxNywiZXhwIjoxNjM3NjAyMTE3fQ.--z3IZRhzhpR99e-eRxlULC94aX6DvMWsikGx_byk4c'
+    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzNzc2MjQ1NCwiZXhwIjoxNjM3NzY2MDU0fQ.ixRhM-M_bcT5sPdVYGGEJtOgus_JZQ8j2I8GIxj8MJU'
 
     const getAllNotes = async ()=>{
       //API call
@@ -35,17 +35,7 @@ const NoteState = (props)=> {
         body : JSON.stringify({title,description,tag}) 
       });
 
-      console.log(response.json());
-
-      let note = {
-        "_id": "aaa",
-        "user": "617aaba824e3d4a420c3915b",
-        "title": title,
-        "description": description,
-        "tag": tag,
-        "date": "2021-11-14T05:51:15.362Z",
-        "__v": 0
-      };
+      const note = await response.json(); 
       setNotes(notes.concat(note));
     }
 
