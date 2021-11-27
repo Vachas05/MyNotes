@@ -5,7 +5,7 @@ const NoteState = (props)=> {
     const host = "http://localhost:5000"  
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial);
-    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzNzc2MjQ1NCwiZXhwIjoxNjM3NzY2MDU0fQ.ixRhM-M_bcT5sPdVYGGEJtOgus_JZQ8j2I8GIxj8MJU'
+    const [authToken, setAuthToken] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzODAyMzMzNCwiZXhwIjoxNjM4MDI2OTM0fQ.xtTfN3sJSYgLr_ruk5uKPadlIAOA9qX6UyyihP5Usdo');
 
     const getAllNotes = async ()=>{
       //API call
@@ -85,7 +85,7 @@ const NoteState = (props)=> {
     }
 
     return (
-        <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,getAllNotes}}>
+        <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,getAllNotes,setAuthToken}}>
             {props.children}
         </NoteContext.Provider>
     )
