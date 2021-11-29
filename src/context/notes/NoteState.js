@@ -5,7 +5,7 @@ const NoteState = (props)=> {
     const host = "http://localhost:5000"  
     const notesInitial = []
     const [notes, setNotes] = useState(notesInitial);
-    const [authToken, setAuthToken] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzODAyMzMzNCwiZXhwIjoxNjM4MDI2OTM0fQ.xtTfN3sJSYgLr_ruk5uKPadlIAOA9qX6UyyihP5Usdo');
+    const [authToken, setAuthToken] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE3YWFiYTgyNGUzZDRhNDIwYzM5MTViIn0sImlhdCI6MTYzODEwNTcxMn0.z08faHmilZvDy_-WTioSPwTAiIhWyZvhXourN_f4E1Q');
 
     const getAllNotes = async ()=>{
       //API call
