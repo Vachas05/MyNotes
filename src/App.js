@@ -19,7 +19,6 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
-          <Alert message={"working fine"}/>
           <div className="container">
             <Switch>
               <Route exact path="/">
